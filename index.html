@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reels Personality Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Discover your personality type based on the Instagram Reels you watch.">
+</head>
+<body>
+    <div class="app-background"></div>
+    <main id="app-container">
+        <!-- Step 1: Home -->
+        <section id="view-home" class="view active">
+            <div class="content-wrapper">
+                <div class="hero-graphic">
+                    <!-- Placeholder for hero illustration -->
+                    <div class="circle-blur one"></div>
+                    <div class="circle-blur two"></div>
+                </div>
+                <h1 class="title">What do your Reels say about you?</h1>
+                <p class="subtitle">Your 3AM scrolling habits reveal more than you think.</p>
+                <div class="action-area">
+                    <button id="btn-start" class="btn-primary">Analyze My Reels</button>
+                    <p class="micro-copy">Safe, private & just for fun</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Consent -->
+        <section id="view-consent" class="view hidden">
+            <div class="content-wrapper">
+                <h2>First, a promise.</h2>
+                <div class="card consent-card">
+                    <ul class="consent-list">
+                        <li>
+                            <span class="icon">🔒</span>
+                            <div class="text">
+                                <strong>We only look at metadata</strong>
+                                <p>We analyze captions and hashtags of Reels you've liked. We don't see your DMs or private photos.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="icon">👻</span>
+                            <div class="text">
+                                <strong>Nothing is stored</strong>
+                                <p>Once the analysis is done, we forget everything. No data leaves your browser session.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="action-area">
+                    <button id="btn-consent-login" class="btn-primary instagram-btn">
+                        <span class="btn-icon">📸</span> Login with Instagram
+                    </button>
+                    <button id="btn-back-home" class="btn-text">Back</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Login Simulation -->
+        <section id="view-login" class="view hidden">
+            <div class="content-wrapper centered">
+                <div class="spinner-container">
+                    <div class="instagram-spinner"></div>
+                </div>
+                <h3>Connecting to Instagram...</h3>
+                <p class="status-text">Requesting permission to read likes...</p>
+            </div>
+        </section>
+
+        <!-- Step 4: Supplementary Questions -->
+        <section id="view-questions" class="view hidden">
+            <div class="content-wrapper">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="question-progress"></div>
+                </div>
+                <div id="question-container">
+                    <!-- Dynamic Question Content Injected Here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: Analyzing -->
+        <section id="view-analyzing" class="view hidden">
+            <div class="content-wrapper centered">
+                <div class="analyzing-graphic">
+                    <span class="emoji floating">😂</span>
+                    <span class="emoji floating delay-1">🥺</span>
+                    <span class="emoji floating delay-2">🤔</span>
+                </div>
+                <h3 id="analyzing-text">Crunching the data...</h3>
+            </div>
+        </section>
+
+        <!-- Step 6: Result -->
+        <section id="view-result" class="view hidden">
+            <div class="content-wrapper">
+                <p class="overline">Your Reels Personality Is</p>
+                <h1 id="result-title" class="result-title">Loading...</h1>
+                
+                <div id="result-illustration" class="result-illustration">
+                    <!-- Result Image -->
+                </div>
+
+                <div class="card result-card">
+                    <p id="result-description" class="result-description">...</p>
+                    <div class="stats-container">
+                        <h4>Your Vibe</h4>
+                        <ul id="result-bullets"></ul>
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <button id="btn-share" class="btn-primary">Share Result</button>
+                    <button id="btn-restart" class="btn-secondary">Start Over</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
