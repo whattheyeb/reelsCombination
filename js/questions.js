@@ -22,7 +22,8 @@ export const questions = [
             { text: { en: "Very funny or meme-like videos", ko: "엄청 웃기거나 밈(Meme) 같은 영상" }, value: "humor" },
             { text: { en: "Calm, aesthetic, or emotional videos", ko: "차분하고 감성적이거나 힐링되는 영상" }, value: "aesthetic" },
             { text: { en: "Informative or skill-based videos", ko: "정보나 새로운 기술을 알려주는 영상" }, value: "learning" },
-            { text: { en: "Short daily-life or vlog-style videos", ko: "짧은 일상 브이로그나 사람 사는 이야기" }, value: "social" }
+            { text: { en: "Short daily-life or vlog-style videos", ko: "짧은 일상 브이로그나 사람 사는 이야기" }, value: "social" },
+            { text: { en: "Delicious food or eating shows (Mukbang)", ko: "맛있는 음식이나 먹방 영상" }, value: "mukbang" }
         ]
     },
     {

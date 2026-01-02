@@ -19,6 +19,10 @@ const PERSONALITIES = {
     social_butterfly: {
         id: "social_butterfly",
         illustration: "🦋"
+    },
+    mukbang_enthusiast: {
+        id: "mukbang_enthusiast",
+        illustration: "🍜"
     }
 };
 
@@ -28,12 +32,16 @@ export const analyzeProfile = (reelsData, answers) => {
         dopamine_chaser: 0,
         aesthetic_curator: 0,
         life_hacker: 0,
-        social_butterfly: 0
+        social_butterfly: 0,
+        mukbang_enthusiast: 0
     };
 
     // 2. Analyze Answers
     // Q1: Time
-    if (answers.Q1 === 'night_owl') scores.dopamine_chaser += 2;
+    if (answers.Q1 === 'night_owl') {
+        scores.dopamine_chaser += 2;
+        scores.mukbang_enthusiast += 1; // Late night cravings
+    }
     if (answers.Q1 === 'busy_bee') scores.life_hacker += 2;
 
     // Q2: Content Memory
@@ -41,14 +49,19 @@ export const analyzeProfile = (reelsData, answers) => {
     if (answers.Q2 === 'aesthetic') scores.aesthetic_curator += 3;
     if (answers.Q2 === 'learning') scores.life_hacker += 3;
     if (answers.Q2 === 'social') scores.social_butterfly += 3;
+    if (answers.Q2 === 'mukbang') scores.mukbang_enthusiast += 5; // Strong boost
 
     // Q3: Reaction
     if (answers.Q3 === 'sharer') scores.social_butterfly += 2;
     if (answers.Q3 === 'active') scores.aesthetic_curator += 1; // Curators save/like
 
     // Q4: Why Like?
-    if (answers.Q4 === 'visuals') scores.aesthetic_curator += 2;
+    if (answers.Q4 === 'visuals') {
+        scores.aesthetic_curator += 2;
+        scores.mukbang_enthusiast += 1; // Food looks good
+    }
     if (answers.Q4 === 'relatability') scores.social_butterfly += 2;
+    if (answers.Q4 === 'impulse') scores.dopamine_chaser += 1;
 
 
     // 3. Analyze Reels Metadata (Mock)
@@ -60,6 +73,7 @@ export const analyzeProfile = (reelsData, answers) => {
             if (tags.includes('aesthetic') || tags.includes('sunset')) scores.aesthetic_curator += 1;
             if (tags.includes('learn') || tags.includes('tips')) scores.life_hacker += 1;
             if (tags.includes('vlog') || tags.includes('daily')) scores.social_butterfly += 1;
+            if (tags.includes('food') || tags.includes('mukbang') || tags.includes('eat') || tags.includes('delicious')) scores.mukbang_enthusiast += 1;
         });
     }
 

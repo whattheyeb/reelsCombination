@@ -47,7 +47,14 @@ export const translations = {
         "p.social_butterfly.desc": "Vlogs, deeply relatable content, and POV videos dominate your feed. You care about people's stories and often tag friends saying 'literally us'.",
         "p.social_butterfly.b1": "Empathy driven",
         "p.social_butterfly.b2": "Loves 'POV' content",
-        "p.social_butterfly.b3": "The friend group's hype person"
+        "p.social_butterfly.b3": "The friend group's hype person",
+
+        "p.mukbang_enthusiast.name": "The Mukbang Enthusiast",
+        "p.mukbang_enthusiast.headline": "I am hungry...",
+        "p.mukbang_enthusiast.desc": "You love watching people eat. It satisfies your cravings visually. Watching late-night ramen videos is your biggest struggle.",
+        "p.mukbang_enthusiast.b1": "Visual eater",
+        "p.mukbang_enthusiast.b2": " knows every popular food trend",
+        "p.mukbang_enthusiast.b3": "Gets hungry at 2 AM"
     },
     ko: {
         "title.main": "당신의 릴스 취향이 말해주는 성격은?",
@@ -97,6 +104,13 @@ export const translations = {
         "p.social_butterfly.desc": "브이로그, 폭풍 공감 콘텐츠, POV 영상이 피드를 지배합니다. 사람들의 이야기에 관심이 많고 친구를 태그하며 '완전 우린데?'라고 자주 말합니다.",
         "p.social_butterfly.b1": "공감 능력 100%",
         "p.social_butterfly.b2": "'POV' 상황극 마니아",
-        "p.social_butterfly.b3": "단톡방의 분위기 메이커"
+        "p.social_butterfly.b3": "단톡방의 분위기 메이커",
+
+        "p.mukbang_enthusiast.name": "프로 먹방러",
+        "p.mukbang_enthusiast.headline": "배고파... (꼬르륵)",
+        "p.mukbang_enthusiast.desc": "먹방을 보면 대리 만족을 느낍니다. 새벽에 라면 먹방을 참는 것이 가장 힘든 시련입니다. '한입만'의 달인이시군요.",
+        "p.mukbang_enthusiast.b1": "눈으로 먹는 미식가",
+        "p.mukbang_enthusiast.b2": "유행하는 간식은 다 알고 있음",
+        "p.mukbang_enthusiast.b3": "새벽 2시에 가장 위험함"
     }
 };
