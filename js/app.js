@@ -2,6 +2,7 @@ import * as State from './state.js';
 import * as InstagramService from './instagram-service.js';
 import * as Questions from './questions.js';
 import * as AnalysisEngine from './analysis-engine.js';
+import { translations } from './translations.js';
 
 // DOM Elements
 const views = {
@@ -12,6 +13,8 @@ const views = {
     analyzing: document.getElementById('view-analyzing'),
     result: document.getElementById('view-result')
 };
+
+let currentLang = 'en';
 
 /**
  * Initialize Application
@@ -25,6 +28,36 @@ function init() {
 
     // Bind Global Events
     bindEvents();
+
+    // Initial text update
+    updateTexts();
+}
+
+/**
+ * Update all text content based on current language
+ */
+function updateTexts() {
+    // 1. Static Content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            el.innerText = translations[currentLang][key];
+        }
+    });
+
+    // 2. Toggle Button
+    const langLabel = document.getElementById('current-lang-text');
+    if (langLabel) {
+        langLabel.innerText = currentLang.toUpperCase();
+    }
+
+    // 3. Dynamic Content (Re-render if necessary)
+    const state = State.getState();
+    if (state.currentStep === 'questions') {
+        renderQuestionFlow(state);
+    } else if (state.currentStep === 'result' && state.result) {
+        renderResult(state.result);
+    }
 }
 
 /**
@@ -59,6 +92,11 @@ function render(state) {
     if (state.currentStep === 'result' && state.result) {
         renderResult(state.result);
     }
+
+    // Ensure texts are correct (navigating might reset some innerHTML if not careful, 
+    // but mostly static parts are fine. This catches generated content.)
+    // However, updateTexts() is heavy to call every render if not needed.
+    // Let's rely on specific renderers to handle dynamic content.
 }
 
 /**
@@ -89,11 +127,11 @@ function renderQuestionFlow(state) {
     // Render Question
     container.innerHTML = `
         <div class="question-card fade-in">
-            <h3>${q.question}</h3>
+            <h3>${q.question[currentLang]}</h3>
             <div class="options-list">
                 ${q.options.map(opt => `
                     <button class="option-btn" data-qid="${q.id}" data-val="${opt.value}">
-                        ${opt.text}
+                        ${opt.text[currentLang]}
                     </button>
                 `).join('')}
             </div>
@@ -135,18 +173,43 @@ function triggerAnalysis() {
  * Render Final Result
  */
 function renderResult(result) {
-    document.getElementById('result-title').innerText = result.name;
-    document.getElementById('result-illustration').innerText = result.illustration;
-    document.getElementById('result-description').innerText = result.description;
+    const t = translations[currentLang];
 
-    const bulletsHtml = result.bullets.map(b => `<li>${b}</li>`).join('');
+    // result now contains { id: "...", illustration: "..." }
+    const pKey = `p.${result.id}`;
+
+    document.getElementById('result-title').innerText = t[`${pKey}.name`];
+    document.getElementById('result-illustration').innerText = result.illustration;
+    document.getElementById('result-description').innerText = t[`${pKey}.desc`];
+
+    // Bullets are p.<id>.b1, b2, b3
+    const bullets = [
+        t[`${pKey}.b1`],
+        t[`${pKey}.b2`],
+        t[`${pKey}.b3`]
+    ];
+
+    const bulletsHtml = bullets.map(b => `<li>${b}</li>`).join('');
     document.getElementById('result-bullets').innerHTML = bulletsHtml;
+
+    // Update labels in Result view (share/restart) just in case
+    // (Handled by global updateTexts generally, but if this is called after navigation)
+    // Actually render() calls this, and updateTexts handles static.
 }
 
 /**
  * Bind Click Listeners etc.
  */
 function bindEvents() {
+    // Language Toggle
+    const btnLang = document.getElementById('btn-lang-toggle');
+    if (btnLang) {
+        btnLang.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ko' : 'en';
+            updateTexts();
+        });
+    }
+
     // Home -> Consent
     document.getElementById('btn-start').addEventListener('click', () => {
         State.setStep('consent');
@@ -177,7 +240,8 @@ function bindEvents() {
 
         } catch (error) {
             console.error("Login failed", error);
-            alert("Failed to connect to Instagram (Simulation). Try again.");
+            const t = translations[currentLang];
+            alert(t['error.login'] || "Login Failed");
             State.setStep('consent'); // Go back
         }
     });

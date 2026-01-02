@@ -5,48 +5,20 @@
 
 const PERSONALITIES = {
     dopamine_chaser: {
-        name: "The Dopamine Chaser",
-        headline: "You're here for a good time, not a long time.",
-        description: "Your feed is a chaotic mix of memes, fails, and high-energy content. you scroll fast, laugh loud, and probably send 50 reels a day to your best friend.",
-        illustration: "🎭",
-        bullets: [
-            "Short attention span (but in a fun way)",
-            "Meme connoisseur",
-            "Always knows the latest trends"
-        ]
+        id: "dopamine_chaser",
+        illustration: "🎭"
     },
     aesthetic_curator: {
-        name: "The Aesthetic Curator",
-        headline: "Your feed is basically an art gallery.",
-        description: "You love sunsets, lo-fi beats, and satisfying visuals. For you, Reels are a way to decomporess and find inspiration. Your saved collection is immaculate.",
-        illustration: "✨",
-        bullets: [
-            "Visuals > Audio",
-            "Likely to have a 'Reels' moodboard",
-            "Appreciates slow living content"
-        ]
+        id: "aesthetic_curator",
+        illustration: "✨"
     },
     life_hacker: {
-        name: "The Life Hacker",
-        headline: "You're optimizing your life, one minute at a time.",
-        description: "Coding tips, finance advice, or gym workouts—if it doesn't teach you something, you scroll past. You treat Instagram like a second university.",
-        illustration: "🧠",
-        bullets: [
-            "Saves way more than likes",
-            "Actually tries the recipes",
-            "Productivity obsessed"
-        ]
+        id: "life_hacker",
+        illustration: "🧠"
     },
     social_butterfly: {
-        name: "The Social Butterfly",
-        headline: "You watch to connect.",
-        description: "Vlogs, deeply relatable content, and POV videos dominate your feed. You care about people's stories and often tag friends saying 'literally us'.",
-        illustration: "🦋",
-        bullets: [
-            "Empathy driven",
-            "loves 'POV' content",
-            "The friend group's hype person"
-        ]
+        id: "social_butterfly",
+        illustration: "🦋"
     }
 };
 
