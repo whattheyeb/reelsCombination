@@ -179,7 +179,7 @@ function renderResult(result) {
     const pKey = `p.${result.id}`;
 
     document.getElementById('result-title').innerText = t[`${pKey}.name`];
-    document.getElementById('result-illustration').innerText = result.illustration;
+    document.getElementById('result-illustration').innerHTML = `<img src="${result.illustration}" alt="${t[`${pKey}.name`]}" class="result-img" />`;
     document.getElementById('result-description').innerText = t[`${pKey}.desc`];
 
     // Bullets are p.<id>.b1, b2, b3
@@ -249,6 +249,29 @@ function bindEvents() {
     // Result -> Restart
     document.getElementById('btn-restart').addEventListener('click', () => {
         State.resetState();
+    });
+
+    // Share Result
+    document.getElementById('btn-share').addEventListener('click', () => {
+        const resultView = document.getElementById('view-result');
+        const shareBtn = document.getElementById('btn-share');
+
+        // Hide button for screenshot
+        shareBtn.style.display = 'none';
+
+        html2canvas(resultView).then(canvas => {
+            // Restore button
+            shareBtn.style.display = 'block';
+
+            const link = document.createElement('a');
+            link.download = 'reels-personality.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }).catch(err => {
+            console.error("Share failed:", err);
+            shareBtn.style.display = 'block';
+            alert("Could not generate image. Sorry!");
+        });
     });
 }
 

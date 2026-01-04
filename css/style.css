@@ -354,16 +354,20 @@ p.subtitle {
 
 .result-illustration {
     width: 100%;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: var(--radius-md);
+    height: auto;
+    min-height: 200px;
     margin: 1.5rem 0;
-    /* Placeholder */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    color: #cbd5e1;
+}
+
+.result-img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
 }
 
 .stats-container h4 {

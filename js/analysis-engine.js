@@ -6,23 +6,23 @@
 const PERSONALITIES = {
     dopamine_chaser: {
         id: "dopamine_chaser",
-        illustration: "🎭"
+        illustration: "./assets/images/dopamine_chaser.png"
     },
     aesthetic_curator: {
         id: "aesthetic_curator",
-        illustration: "✨"
+        illustration: "./assets/images/aesthetic_curator.png"
     },
     life_hacker: {
         id: "life_hacker",
-        illustration: "🧠"
+        illustration: "./assets/images/life_hacker.png"
     },
     social_butterfly: {
         id: "social_butterfly",
-        illustration: "🦋"
+        illustration: "./assets/images/social_butterfly.png"
     },
     mukbang_enthusiast: {
         id: "mukbang_enthusiast",
-        illustration: "🍜"
+        illustration: "./assets/images/mukbang_enthusiast.png"
     }
 };
 
